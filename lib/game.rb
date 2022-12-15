@@ -15,8 +15,9 @@ class Game
 
         while @remaining_turns > 0
             
+            
             while true
-                print "Type 4 integers (1-6): "
+                print "Type 4 unique integers (1-6): "
                 guess = gets.chomp
                 guess = guess.split("")
                 if isValid?(guess)
@@ -26,8 +27,13 @@ class Game
                     puts "Your input is invalid. Please try again"
                 end
             end
-            userPlayer.updateCode(guess)
-            p userPlayer.code
+            @userPlayer.updateCode(guess)
+            p @userPlayer.code
+
+            if @userPlayer.code == @computerPlayer.code
+                winActivate()
+            else
+
 
             @remaining_turns -= 1
         end
@@ -43,11 +49,26 @@ class Game
                     break
                 end
             end
+            if guess.uniq.length != guess.length
+                valid = false
+            else
+                
+            end
         else
             valid = false
         end
 
         valid
+    end
+
+    def winActivate
+    
+    end
+
+    def checkSimilarities
+        correct_guesses = []
+        
+
     end
 end
 

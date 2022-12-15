@@ -7,12 +7,15 @@ class Player
         if @role == "breaker"
             @code = []
         else
-            createCode
+            createCode()
         end
     end
 
     def createCode
         @code = 4.times.map{ 1 + Random.rand(6) }
+        if @code.uniq.length != @code.length
+            createCode()
+        end
     end
 
     def updateCode(newCode)
